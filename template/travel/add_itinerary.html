@@ -1,0 +1,15 @@
+{% extends 'travel/base.html' %}
+
+{% block content %}
+    <h1>Add Itinerary</h1>
+    {% if submitted %}
+        Your Event Was Submitted Successfully!
+    {% else %}
+        <form action="" method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" value="Submit">
+        </form>
+    {% endif %}
+
+{% endblock %}

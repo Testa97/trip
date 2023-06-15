@@ -1,0 +1,16 @@
+{% extends 'travel/base.html' %}
+
+{% block content %}
+{% if form.errors %}
+
+    <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+    <h1>Register</h1>
+<form action="{% url 'register' %}" method=POST>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" class="btn btn-secondary" />
+</form>
+
+{% endblock %}

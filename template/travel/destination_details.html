@@ -1,0 +1,55 @@
+{% extends 'travel/base.html' %}
+
+{% block content %}
+    <h3>{{ destinazione.nome }}</h3>
+    <p>{{ destinazione.descrizione }}</p>
+
+    <h4>Strutture</h4>
+    {% for struttura in strutture %}
+        <div class="struttura">
+            <h5>{{ struttura.nome }}</h5>
+            <p>{{ struttura.descrizione}}</p>
+        </div>
+    {% endfor %}
+
+    <h4>Itinerari</h4>
+    {% for itinerario in itinerari %}
+        <div class="itinerario">
+            <h5>{{ itinerario.nome }}</h5>
+            <p>{{ itinerario.descrizione}}</p>
+            <p>Day 1</p>
+            <p>{{ itinerario.day1 }}</p>
+            {% if itinerario.day2 is not None %}
+            <p>Day 2</p>
+            <p>{{ itinerario.day2 }}</p>
+            {% endif %}
+            {% if itinerario.day3 is not None %}
+            <p>Day 3</p>
+            <p>{{ itinerario.day3 }}</p>
+            {% endif %}
+            {% if itinerario.day4 is not None %}
+            <p>Day 4</p>
+            <p>{{ itinerario.day4 }}</p>
+            {% endif %}
+            {% if itinerario.day5 is not None %}
+                <p>Day 5</p>
+                <p>{{ itinerario.day5 }}</p>
+            {% endif %}
+            {% if itinerario.day6 is not None %}
+            <p>Day 6</p>
+            <p>{{ itinerario.day6 }}</p>
+            {% endif %}
+            {% if itinerario.day7 is not None %}
+                <p>Day 7</p>
+                <p>{{ itinerario.day7 }}</p>
+            {% endif %}
+            <p>Prezzo: {{ itinerario.prezzo }}</p>
+        </div>
+    {% endfor %}
+    <h3>Book Now!</h3>
+    <form action="{% url 'add_prenotation' destinazione.nome %}" method="get">
+        {% csrf_token %}
+        <button class="btn btn-primary" type="submit">Book</button>
+    </form>
+
+{% endblock %}

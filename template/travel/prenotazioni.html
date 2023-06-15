@@ -1,0 +1,25 @@
+{% extends 'travel/base.html' %}
+
+{% block content %}
+
+<div class="card">
+    Qui puoi vedere le tue prenotazioni:
+    {% for prenotazione in prenotazioni %}
+    <div class="card-header">{{ prenotazione.destinazione_id }}</div>
+    <div class="card-body">
+        <h5 class="card-title">Destinazione: {{ prenotazione.destinazione.nome }}</h5>
+        <br class="card-text">
+            <li>Destinazione: {{ prenotazione.destinazione.nome}}</li>
+            <li>Prenotazione ID: {{ prenotazione.prenotazione_id}}</li>
+            <li>Nome completo: {{ prenotazione.nome_completo }}</li>
+            <li>Data inizio: {{ prenotazione.data_inizio}}</li>
+            <li>Data fine: {{ prenotazione.data_fine}}</li>
+            <li>Numero persone: {{ prenotazione.numero_persone}}</li>
+            <li>Prezzo: {{ prenotazione.prezzo}}</li>
+            <br><br>
+        </p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

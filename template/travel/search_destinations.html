@@ -1,0 +1,28 @@
+{% extends 'travel/base.html' %}
+
+{% block content %}
+    <div class="card">
+    <div class="card-header">
+        {% if searched %}
+            You searched for {{ searched }}
+        {% else %}
+            Search Destinations
+        {% endif %}
+    </div>
+    <div class="card-boy">
+        <form method=POST action="{% url 'search_destinations' %}">
+            {% csrf_token %}
+            <input class="form-control me-2" type="search" placeholder="Search Destinations" aria-label="Search" name="searched">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </form>
+    </div>
+    <br>
+    {% for destinazione in destinazioni %}
+    <div class="card-header">
+        {{ destinazione.nome }}
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{ destinazione.descrizione }}</p>
+        <a href="{% url 'destination' destinazione.nome %}" class="btn btn-primary">View</a>
+    {% endfor %}
+{% endblock %}
